@@ -31,7 +31,7 @@ import { CollectionsRounded } from "@mui/icons-material";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 export const firebaseConfig = {
   apiKey: "AIzaSyAThtL3FG5oSY1_-DQq6cvod0T463-Nwlc",
-  authDomain: "iti-final-project0.firebaseapp.com",
+  authDomain: "jumia-clone-project.vercel.app",
   projectId: "iti-final-project0",
   storageBucket: "iti-final-project0.appspot.com",
   messagingSenderId: "590751786816",
