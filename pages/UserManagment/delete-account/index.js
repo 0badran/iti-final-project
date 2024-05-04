@@ -61,6 +61,7 @@ function DeleteAccount() {
     } catch (error) {
       setAlertFail(true);
       setTimeout(() => setAlertFail(false), 2000);
+      throw new Error("Requst fail to delete your account");
     }
   }
   return (
