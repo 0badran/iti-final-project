@@ -35,7 +35,7 @@ export default function Help() {
       </div>
       {isOpen && (
         <div
-          className="absolute top-full w-52 left-0 mt-2 bg-white border border-gray-300 shadow-md rounded-md"
+          className="absolute  w-40 -left-28 sm:left-0 mt-2 bg-white border border-gray-300 shadow-md rounded-md"
           style={{ zIndex: 100 }}
         >
           <Link href="/help">

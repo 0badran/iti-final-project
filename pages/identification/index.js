@@ -84,94 +84,91 @@ function Login_signup() {
     <>
       {spinner ? <Spinner /> : ""}
       <Card
-        className={
-          spinner
-            ? "flex flex-col items-center mt-10 relative opacity-25"
-            : "flex flex-col items-center mt-10 relative"
-        }
-        shadow={false}
+        className="h-screen w-screen"
       >
-        <div className="flex flex-col items-center w-[30rem]">
-          <Image
-            width="70"
-            height="70"
-            className="object-cover object-center mb-3"
-            src={topLogo}
-            alt="logo-image"
-          />
-          <Typography variant="h3" color="black">
-            {t("Welcome to Jumia")}
-          </Typography>
-          <Typography color="black" className="mt-1 text-center">
-            {t(
-              "Type your e-mail or phone number to log in or create a Jumia account."
-            )}
-          </Typography>
-        </div>
+        <div className="mt-7 p-7 md:m-auto md:p-0 md:w-1/2 lg:w-1/3">
 
-        <form className="border-b-2" onSubmit={handleSubmit(loginOrSignup)}>
-          <div className="w-[28rem] my-10">
-            <Input
-              size="lg"
-              color={errors.email ? "red" : "orange"}
-              label={t("Enter your email")}
-              {...register("email", {
-                required: true,
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@(gmail|yahoo|outlook)+(.com)$/,
-                  message:
-                    "This email is not valid. inser valid email to continue. Email must be (gmail - yahoo - outlook).",
-                },
-              })}
-            />
-            <p className="text-red-600 text-xs">{errors.email?.message}</p>
-          </div>
-          <Button
-            type="submit"
-            className="mt-6 text-white"
-            size="lg"
-            color="amber"
-            fullWidth
-          >
-            {t("CONTINUE")}
-          </Button>
-          <Typography color="black" className="text-xs my-2 text-center">
-            {t("By continuing you agree to Jumia's")}
-            <a href="#" className="block underline mt-1 text-orange-500">
-              {t("Terms and Conditions")}
-            </a>
-          </Typography>
-        </form>
-        <div className="w-[28rem]">
-          <Button
-            size="lg"
-            variant="outlined"
-            color="blue-gray"
-            className="flex items-center justify-center mt-12 mb-8"
-            onClick={() => loginWithGoogle()}
-            fullWidth
-          >
-            <img
-              src="https://docs.material-tailwind.com/icons/google.svg"
-              alt="metamask"
-              className="h-6 w-6"
-            />
-            {t("CONTINUE WITH GOOGLE")}
-          </Button>
-          <Typography color="black" className="text-sm text-center">
-            {t(
-              "For further support, you may visit the Help Center or contact our customer service team."
-            )}
-          </Typography>
-          <div className="flex flex-col  items-center mt-5">
+          <div className="flex flex-col items-center">
             <Image
-              width="50"
-              height="50"
-              className="object-cover object-center"
-              src={bottomLogo}
-              alt="another-logo"
+              width="70"
+              height="70"
+              className="object-cover object-center mb-3"
+              src={topLogo}
+              alt="logo-image"
             />
+            <Typography variant="h3" color="black">
+              {t("Welcome to Jumia")}
+            </Typography>
+            <Typography color="black" className="mt-1 text-center">
+              {t(
+                "Type your e-mail or phone number to log in or create a Jumia account."
+              )}
+            </Typography>
+          </div>
+
+          <form className="border-b-2" onSubmit={handleSubmit(loginOrSignup)}>
+            <div className="">
+              <Input
+                color={errors.email ? "red" : "orange"}
+                label={t("Enter your email")}
+                {...register("email", {
+                  required: true,
+                  pattern: {
+                    value:
+                      /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@(gmail|yahoo|outlook)+(.com)$/,
+                    message:
+                      "This email is not valid. inser valid email to continue. Email must be (gmail - yahoo - outlook).",
+                  },
+                })}
+              />
+              <p className="text-red-600 text-xs">{errors.email?.message}</p>
+            </div>
+            <Button
+              type="submit"
+              className="mt-6 text-white"
+              size="lg"
+              color="amber"
+              fullWidth
+            >
+              {t("CONTINUE")}
+            </Button>
+            <Typography color="black" className="text-xs my-2 text-center">
+              {t("By continuing you agree to Jumia's")}
+              <a href="#" className="block underline mt-1 text-orange-500">
+                {t("Terms and Conditions")}
+              </a>
+            </Typography>
+          </form>
+          <div className="">
+            <Button
+              size="lg"
+              variant="outlined"
+              color="blue-gray"
+              className="flex items-center justify-center mt-12 mb-8"
+              onClick={() => loginWithGoogle()}
+              fullWidth
+            >
+              <img
+                src="https://docs.material-tailwind.com/icons/google.svg"
+                alt="metamask"
+                className="h-6 w-6"
+              />
+              {t("CONTINUE WITH GOOGLE")}
+            </Button>
+            <Typography color="black" className="text-sm text-center">
+              {t(
+                "For further support, you may visit the Help Center or contact our customer service team."
+              )}
+            </Typography>
+            <div className="flex flex-col  items-center mt-5">
+              <Image
+                width="50"
+                height="50"
+                className="object-cover object-center"
+                src={bottomLogo}
+                alt="another-logo"
+              />
+            </div>
           </div>
         </div>
       </Card>

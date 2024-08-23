@@ -74,7 +74,7 @@ export default function Account() {
       </div>
       {isOpen && (
         <div
-          className="absolute top-full w-48 left-0 mt-2 bg-white border border-gray-300 shadow-md rounded-md"
+          className="absolute top-full -left-12 sm:w-40 md:w-48 sm:left-0 mt-2 bg-white border border-gray-300 shadow-md rounded-md"
           style={{ zIndex: 100 }}
           id="container"
         >
