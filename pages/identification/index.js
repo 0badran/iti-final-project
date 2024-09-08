@@ -18,8 +18,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 function Login_signup() {
   const router = useRouter();
   const provider = new GoogleAuthProvider();
-  const [spinner, setSpinner] = useState(false);
   const [storageProducts, setStorageProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -31,15 +31,18 @@ function Login_signup() {
   const { t } = useTranslation("login");
 
   async function loginOrSignup({ email }) {
+    setIsLoading(true);
     const isExist = await fetchSignInMethodsForEmail(auth, email);
     if (isExist.length) {
       router.push("/identification/login/" + email);
     } else {
       router.push("/identification/signup/" + email);
     }
+    setIsLoading(false);
   }
 
   function loginWithGoogle() {
+    setIsLoading(true);
     signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.
@@ -67,24 +70,25 @@ function Login_signup() {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         // For UI.
-        setSpinner(true);
+        setIsLoading(true);
         setTimeout(() => {
-          setSpinner(false);
           router.push("/");
+          setIsLoading(false);
         }, 3000);
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log("Error: ", error);
+        console.error("Error: ", error);
+        setIsLoading(false);
       });
     // We not need this part.
   }
 
   return (
     <>
-      {spinner ? <Spinner /> : ""}
+      {isLoading && <Spinner />}
       <Card
-        className="h-screen w-screen"
+        className={`h-screen w-screen ${isLoading ? "opacity-50" : ""}`}
       >
         <div className="mt-7 p-7 md:m-auto md:p-0 md:w-1/2 lg:w-1/3">
 
@@ -139,7 +143,7 @@ function Login_signup() {
               </a>
             </Typography>
           </form>
-          <div className="">
+          <div>
             <Button
               size="lg"
               variant="outlined"
@@ -184,7 +188,7 @@ function Spinner() {
   return (
     <div
       role="status"
-      className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
+      className="absolute z-50 -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2"
     >
       <svg
         aria-hidden="true"

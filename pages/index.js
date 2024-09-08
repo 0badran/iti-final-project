@@ -11,7 +11,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 export default function Home() {
   return (
     <>
-      <main className=" mx-auto p-2 lg:container">
+      <main className="mx-auto p-2 lg:container">
         <Header />
         <Recommended />
         <SliderMainPage />

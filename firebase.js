@@ -15,15 +15,12 @@ import {
   where,
 } from "firebase/firestore";
 import {
-  browserLocalPersistence,
   browserSessionPersistence,
   getAuth,
-  onAuthStateChanged,
   setPersistence,
 } from "firebase/auth";
 import { data } from "./data";
 import SuperJSON from "superjson";
-import { CollectionsRounded } from "@mui/icons-material";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
